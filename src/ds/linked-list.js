@@ -1,76 +1,88 @@
-//The LinkedList
-//Also, as it turns out, performing string concatenation with '+=' is way faster in Javascript
+/*
+The LinkedList
+Also, as it turns out:
 
-class Node {
+1. Performing string concatenation with '+=' is way faster in Javascript
+2. ESModules are the future of module management in Node. Although it was a pain to set up Jest.
+3. Using const for variables that won't be reassigned is the best practice.
+
+*/
+
+export class Node {
   constructor(data) {
     this.data = data;
     this.next = null;
   }
 }
 
-class LinkedList {
+export class LinkedList {
 
-  insert(data) {
+  insertHead(data) {
+
     if (!this.head) {
+
       this.head = new Node(data);
+      this.tail = this.head;
 
       return;
     }
 
-    let newHead = new Node(data);
+    const newHead = new Node(data);
 
     newHead.next = this.head;
 
     this.head = newHead;
   }
 
-  insertAtEnd(data) {
+  insertTail(data) {
 
     if (!this.head) {
-      this.head = new Node(data);
-
+      this.insertHead(data);
       return;
     }
 
-    let current = this.head;
+    const newTail = new Node(data);
 
-    while (current.next) {
+    this.tail.next = newTail;
+    this.tail = newTail;
+  }
+
+  get(i) {
+    let current = this.head;
+    let currentIndex = 0;
+
+    while (currentIndex < i && current) {
+      currentIndex++;
       current = current.next;
     }
 
-    current.next = new Node(data);
+    if (currentIndex == i) {
+      return current;
+    }
+    else {
+      return null;
+    }
   }
 
-  print() {
+  getValues() {
 
-    let strList = "[";
+    const values = [];
 
     let current = this.head;
 
     while (current) {
-      strList += current.data;
-
-      if (current.next) {
-        strList += ",";
-      }
+      values.push(current.data);
 
       current = current.next;
     }
 
-    strList += "]";
+    return values;
+  }
 
-    console.log(strList);
+  print() {
+
+    const values = this.getValues();
+
+    console.log(values.join(','));
   }
 }
-
-var list = new LinkedList();
-
-list.insertAtEnd(2);
-list.insertAtEnd(4);
-list.insertAtEnd(6);
-list.insertAtEnd(20);
-
-list.insert(10);
-list.insert(22);
-
-list.print();
