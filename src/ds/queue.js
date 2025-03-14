@@ -1,9 +1,7 @@
 //The Queue follows the FIFO, First In First Out, principle.
-class Queue {
+export class Queue {
 
   push(e) {
-
-    console.log(`pushed: ${e}`);
 
     if (!this.head) {
       this.head = { value: e };
@@ -28,8 +26,6 @@ class Queue {
 
     let out = this.head.value;
 
-    console.log(`poped: ${out}`);
-
     this.head = this.head.next;
 
     return out;
@@ -38,8 +34,6 @@ class Queue {
   isEmpty() {
 
     let isEmpty = !this.head;
-
-    console.log(`is empty: ${isEmpty}`);
 
     return isEmpty;
   }
@@ -58,7 +52,6 @@ class Queue {
     }
 
     console.log(`queue: ${queue}`);
-
   }
 }
 

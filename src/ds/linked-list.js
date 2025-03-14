@@ -64,6 +64,20 @@ export class LinkedList {
     }
   }
 
+  remove(i) {
+    let current = this.head;
+    let currentIndex = 0;
+
+    while (currentIndex < (i - 1) && current) {
+      currentIndex++;
+      current = current.next;
+    }
+
+    if (currentIndex == i) {
+
+    }
+  }
+
   getValues() {
 
     const values = [];

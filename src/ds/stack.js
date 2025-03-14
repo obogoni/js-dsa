@@ -1,47 +1,48 @@
 //The Stack fallows the LIFO principle, Last In, First Out, principle
 //Also, as it turns out, you can define classes in Javascript
 
-class Stack {
+class Node {
+  constructor(data) {
+    this.value = data;
+    this.next = null;
+  }
+}
+
+export class Stack {
 
   push(e) {
 
-    console.log(`pushed: ${e}`);
-
     if (!this.head) {
 
-      this.head = { value: e };
+      this.head = new Node(e);
       return;
     }
 
-    this.head =
-    {
-      next: this.head,
-      value: e
-    };
+    const newHead = new Node(e);
+
+    newHead.next = this.head;
+
+    this.head = newHead;
   }
 
   peek() {
-    if (this.isEmpty()) return null;
-
-    console.log(`peeked: ${this.head.value}`);
-
-    return this.head.value;
-
+    return this.head?.value;
   }
 
   pop() {
-    if (this.isEmpty()) return null;
 
-    console.log(`poped: ${this.head.value}`);
+    if (!this.head) return null;
 
-    this.head = this.head.next;
+    const poped = this.head;
+
+    this.head = poped.next;
+
+    return poped.value;
   }
 
   isEmpty() {
 
     let isEmpty = !this.head;
-
-    console.log(`is empty: ${isEmpty}`);
 
     return isEmpty;
   }
@@ -67,20 +68,3 @@ class Stack {
     console.log(`stack: ${stack}`);
   }
 }
-
-var myStack = new Stack();
-
-myStack.push(1);
-myStack.push(54);
-myStack.pop();
-myStack.pop();
-myStack.pop();
-myStack.push(23);
-myStack.push(29)
-myStack.push(3);
-myStack.peek();
-myStack.pop();
-myStack.push(88);
-myStack.peek();
-myStack.print();
-
