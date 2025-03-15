@@ -43,5 +43,32 @@ describe('LinkedList', () => {
     list.print();
     expect(console.log).toHaveBeenCalledWith('1,2,3');
   });
+
+  test('should remove the node at the specified index and return true', () => {
+    list.insertTail(1);
+    list.insertTail(2);
+    list.insertTail(3);
+    const result = list.remove(1);
+    expect(result).toBe(true);
+    expect(list.getValues()).toEqual([1, 3]);
+  });
+
+  test('should return false if no node is found at the specified index', () => {
+    list.insertTail(1);
+    list.insertTail(2);
+    list.insertTail(3);
+    const result = list.remove(3); // Index 3 does not exist
+    expect(result).toBe(false);
+    expect(list.getValues()).toEqual([1, 2, 3]);
+  });
+
+  test('should remove the head node and update the head pointer', () => {
+    list.insertTail(1);
+    list.insertTail(2);
+    list.insertTail(3);
+    const result = list.remove(0);
+    expect(result).toBe(true);
+    expect(list.getValues()).toEqual([2, 3]);
+  });
 });
 

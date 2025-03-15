@@ -65,6 +65,14 @@ export class LinkedList {
   }
 
   remove(i) {
+
+    if (i === 0) {
+      if (!this.head) return false;
+      this.head = this.head.next;
+      if (!this.head) this.tail = null;
+      return true;
+    }
+
     let current = this.head;
     let currentIndex = 0;
 
@@ -73,8 +81,12 @@ export class LinkedList {
       current = current.next;
     }
 
-    if (currentIndex == i) {
-
+    if (!current || !current.next) {
+      return false;
+    } else {
+      current.next = current.next.next;
+      if (!current.next) this.tail = current;
+      return true;
     }
   }
 
