@@ -66,12 +66,7 @@ export class LinkedList {
 
   remove(i) {
 
-    if (i === 0) {
-      if (!this.head) return false;
-      this.head = this.head.next;
-      if (!this.head) this.tail = null;
-      return true;
-    }
+    if (i === 0) return this.removeHead();
 
     let current = this.head;
     let currentIndex = 0;
@@ -82,13 +77,30 @@ export class LinkedList {
     }
 
     if (!current || !current.next) {
+      //index out of bound
       return false;
-    } else {
+    }
+    else {
       current.next = current.next.next;
       if (!current.next) this.tail = current;
       return true;
     }
   }
+
+  removeHead() {
+    if (!this.head) return false;
+    this.head = this.head.next;
+    if (!this.head) this.tail = null;
+    return true;
+  }
+
+  removeTail() {
+    if (!this.head) return false;
+    if (this.head === this.tail) return this.removeHead();
+
+    return this.remove(this.getValues().length - 1);
+  }
+
 
   getValues() {
 

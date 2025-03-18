@@ -70,5 +70,29 @@ describe('LinkedList', () => {
     expect(result).toBe(true);
     expect(list.getValues()).toEqual([2, 3]);
   });
+
+  test('should remove the head node using removeHead', () => {
+    list.insertTail(1);
+    list.insertTail(2);
+    list.insertTail(3);
+    list.removeHead();
+    expect(list.getValues()).toEqual([2, 3]);
+    list.removeHead();
+    expect(list.getValues()).toEqual([3]);
+    list.removeHead();
+    expect(list.getValues()).toEqual([]);
+  });
+
+  test('should remove the tail node using removeTail', () => {
+    list.insertTail(1);
+    list.insertTail(2);
+    list.insertTail(3);
+    list.removeTail();
+    expect(list.getValues()).toEqual([1, 2]);
+    list.removeTail();
+    expect(list.getValues()).toEqual([1]);
+    list.removeTail();
+    expect(list.getValues()).toEqual([]);
+  });
 });
 
