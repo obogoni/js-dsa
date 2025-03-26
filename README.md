@@ -18,7 +18,8 @@ npm test
 
 ## Data Structures
 
-- LinkedList
+- Doubly linked list
+- Linked list
 - Queue
 - Stack
 
