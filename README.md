@@ -25,9 +25,14 @@ npm test
 
 ## Algorithms
 
-- Divide and Conquer (findMax)
-- Two Pointers (twoSum)
-- Palindrome Check (isPalindrome)
+- Divide and Conquer
+- Two Pointers
+- Binary Search
+
+## Problems
+
+- Palindrome Check
+- Crystal Balls
 
 ## License
 

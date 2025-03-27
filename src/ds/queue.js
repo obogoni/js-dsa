@@ -1,6 +1,14 @@
 //The Queue follows the FIFO, First In First Out, principle.
+/**
+ * Represents a queue data structure following the FIFO (First In, First Out) principle.
+ */
 export class Queue {
 
+  /**
+   * Adds an element to the end of the queue.
+   * Time complexity: O(n), where n is the number of elements in the queue.
+   * @param {*} e - The element to add to the queue.
+   */
   push(e) {
 
     if (!this.head) {
@@ -20,6 +28,11 @@ export class Queue {
     };
   }
 
+  /**
+   * Removes and returns the element at the front of the queue.
+   * Time complexity: O(1)
+   * @returns {*} The removed element from the front of the queue, or null if the queue is empty.
+   */
   pop() {
 
     if (this.isEmpty()) return null;
@@ -31,6 +44,11 @@ export class Queue {
     return out;
   }
 
+  /**
+   * Checks if the queue is empty.
+   * Time complexity: O(1)
+   * @returns {boolean} True if the queue is empty, false otherwise.
+   */
   isEmpty() {
 
     let isEmpty = !this.head;
@@ -38,6 +56,10 @@ export class Queue {
     return isEmpty;
   }
 
+  /**
+   * Prints the elements of the queue.
+   * Time complexity: O(n), where n is the number of elements in the queue.
+   */
   print() {
     if (this.isEmpty()) return;
 
@@ -54,15 +76,3 @@ export class Queue {
     console.log(`queue: ${queue}`);
   }
 }
-
-var queue = new Queue();
-
-queue.push(1);
-queue.push(18);
-queue.push(5);
-queue.pop();
-queue.pop();
-queue.push(22);
-queue.pop();
-queue.print();
-
